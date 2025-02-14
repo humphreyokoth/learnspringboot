@@ -25,6 +25,10 @@ public class MyFirstService {
 
     @Value("${my.prop}")
     private String customPropertyFromAnotherFile;
+    @Value("${my.prop.2}")
+    private String customPropertyFromAnotherFile2;
+
+
     @Value("123")
     private  Integer customPropertyInt;
 
@@ -49,5 +53,9 @@ public class MyFirstService {
 
     public String getCustomProperty() {
         return customProperty;
+    }
+
+    public String getCustomPropertyFromAnotherFile2() {
+        return customPropertyFromAnotherFile2;
     }
 }
