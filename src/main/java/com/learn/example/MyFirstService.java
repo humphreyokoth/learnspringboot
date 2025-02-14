@@ -11,23 +11,31 @@ public class MyFirstService {
 //    @Autowired
 //    @Qualifier("mySecondBean")
     private  MyFirstClass myFirstClass;
+    private  Environment environment;
+
 
     @Autowired
     public void setMyFirstClass(@Qualifier("bean1") MyFirstClass myFirstClass){
         this.myFirstClass = myFirstClass;
     }
 
-//
-//    public MyFirstService(MyFirstClass myFirstClass){
-//        this.myFirstClass = myFirstClass;
-//    }
 
 
 
     public String tellAStory(){
       return  "the dependency is saying:"+ myFirstClass.sayHello();
     }
+    public String getJavaVersion(){
+        return environment.getProperty("java.version");
+    }
 
 
+    @Autowired
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
 
+    public String getOsName(){
+        return environment.getProperty("os.name");
+    }
 }
