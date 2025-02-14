@@ -9,7 +9,7 @@ public class ApplicationConfig {
 
 
 
-    @Bean()
+    @Bean("bean1")
     public MyFirstClass myFirstBean(){
         return new MyFirstClass("First Bean");
     }
