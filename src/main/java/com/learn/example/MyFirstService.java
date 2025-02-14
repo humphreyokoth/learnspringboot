@@ -30,9 +30,14 @@ public class MyFirstService {
     }
 
 
+
     @Autowired
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    public String readProperty(){
+        return environment.getProperty("my.custom.property");
     }
 
     public String getOsName(){
