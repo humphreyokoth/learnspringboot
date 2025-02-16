@@ -17,8 +17,7 @@ public class FirstController {
 
     @PostMapping("/post")
     public String post(
-            String message
-    ){
+            String message){
         return "Request accepted and message is :"+message;
     }
 }
