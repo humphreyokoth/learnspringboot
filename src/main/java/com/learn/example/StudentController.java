@@ -1,20 +1,19 @@
 package com.learn.example;
 
 
-import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class FirstController {
+public class StudentController {
 
 
 
     private final StudentRepository repository;
 
-    public FirstController(StudentRepository repository) {
+    public StudentController(StudentRepository repository) {
         this.repository = repository;
     }
 
