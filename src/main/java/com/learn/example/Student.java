@@ -1,16 +1,21 @@
 package com.learn.example;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "T_STUDENT")
 public class Student {
     @Id
     private  Integer id;
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
     private  int age;
+
 
     public Student() {
     }
