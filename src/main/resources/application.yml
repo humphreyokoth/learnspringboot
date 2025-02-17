@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/springboot
-    username:
+    username: postgres
     password:
     driver-class-name: org.postgresql.Driver
     database-platform:  org.hibernate.dialect.PostgreSQLDialect
