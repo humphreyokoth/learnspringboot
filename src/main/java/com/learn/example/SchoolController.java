@@ -13,16 +13,26 @@ public class SchoolController {
 
     private final SchoolRepository schoolRepository;
 
+
+
+
     public SchoolController(SchoolRepository schoolRepository) {
         this.schoolRepository = schoolRepository;
     }
 
     @PostMapping("/schools")
-    public  School create(
-            @RequestBody School school
+    public  SchoolDto create(
+            @RequestBody SchoolDto dto
     ){
-    return  schoolRepository.save(school);
+        var school = toSchool(dto);
+        var savedSchool = schoolRepository.save(school);
+        return dto;
     }
+
+    private School toSchool(SchoolDto dto) {
+        return  new School(dto.name());
+    }
+
 
     @GetMapping("/schools")
     public List<School> findAll(){

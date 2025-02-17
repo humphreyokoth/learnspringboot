@@ -31,6 +31,9 @@ public class School {
     public School() {
 
     }
+    public School(String name){
+        this.name =name;
+    }
 
 
     public Integer getId() {
