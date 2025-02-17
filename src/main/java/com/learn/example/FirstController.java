@@ -36,6 +36,12 @@ public class FirstController {
         return  repository.findById(id).orElse(null);
     }
 
+    @GetMapping("/students/search/{student-name}")
+    public List<Student> findStudentsByName(
+            @PathVariable("student-name") String name
+    ){
+        return  repository.findAllByFirstnameContaining(name);
+    }
 
 
 }
