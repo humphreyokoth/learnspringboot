@@ -1,6 +1,7 @@
 package com.learn.example;
 
 
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,27 +19,5 @@ public class FirstController {
     ){
         return "Request accepted and message is :"+message;
     }
-
-    @PostMapping("/post-order")
-    public String postOrder(
-            @RequestBody Order order
-    ){
-        return "Request accepted and order is :" + order.toString( );
-    }
-
-    @PostMapping("/post-order-record")
-    public String postRecord(
-            @RequestBody OrderRecord order
-    ){
-        return "Request accepted and order is :" + order.toString( );
-    }
-
-
-    @GetMapping("/hello/{user-name}")
-    public String pathVar(
-            @PathVariable("user-name") String userName){
-        return "my value=" +userName;
-    }
-
 
 }
