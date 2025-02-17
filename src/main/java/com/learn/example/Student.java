@@ -3,7 +3,7 @@ package com.learn.example;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "STUDENTS")
+@Table(name = "STUDENT")
 public class Student {
     @Id
     @GeneratedValue
@@ -14,6 +14,11 @@ public class Student {
     private String email;
     private  int age;
 
+    @OneToOne(
+            mappedBy = "student",
+            cascade =  CascadeType.ALL
+    )
+    private StudentProfile studentProfile;
 
     public Student() {
     }
