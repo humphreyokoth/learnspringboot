@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class StudentMapperTest {
 
@@ -37,6 +36,28 @@ class StudentMapperTest {
 
 
     }
+
+    @Test
+    public void should_throw_null_pointer_exception_when_studentDto_is_null(){
+       var exp = assertThrows(NullPointerException.class,()->mapper.toStudent(null));
+        assertEquals("The studentDto should not be null",exp.getMessage());
+    }
+    @Test
+    public void shouldMapStudentToStudentResponseDto(){
+        Student student = new Student(
+                "john",
+                "doe",
+                "humpasp@gmail.com",
+                20);
+
+    StudentResponseDto response = mapper.toStudentResponseDto(student);
+        assertEquals(response.firstname(),student.getFirstname());
+        assertEquals(response.lastname(),student.getLastname());
+        assertEquals(response.email(),student.getEmail());
+
+
+    }
+
 
 
 }
