@@ -1,27 +1,42 @@
 package com.learn.example.student;
 
-import org.junit.jupiter.api.AfterEach;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class StudentMapperTest {
+
+   private  StudentMapper mapper;
+
     @BeforeEach
     void setUp() {
-        System.out.println("Before the first test method");
-
-    }
-
-    @AfterEach
-    void tearDown() {
-        System.out.println("Inside the after each method");
+        mapper = new StudentMapper();
 
     }
 
     @Test
-    public void testMethod1(){
-        System.out.println("My first test");
+   public void shouldMapStudentDtoToStudent(){
+    StudentDto dto = new StudentDto(
+            "john",
+        "doe",
+        "humpasp@gmail.com",
+        1);
+    Student student = mapper.toStudent(dto);
+
+        assertEquals(dto.firstname(),student.getFirstname());
+        assertEquals(dto.lastname(),student.getLastname());
+        assertEquals(dto.email(),student.getEmail());
+        assertNotNull(student.getSchool());
+        assertEquals(dto.schoolId(),student.getSchool().getId());
+
+
+
+
     }
+
 
 }
