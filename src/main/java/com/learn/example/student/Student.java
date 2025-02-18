@@ -2,6 +2,7 @@ package com.learn.example.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.learn.example.school.School;
+import com.learn.example.studentprofile.StudentProfile;
 import jakarta.persistence.*;
 
 @Entity

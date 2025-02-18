@@ -1,5 +1,6 @@
-package com.learn.example.student;
+package com.learn.example.studentprofile;
 
+import com.learn.example.student.Student;
 import jakarta.persistence.*;
 
 @Entity

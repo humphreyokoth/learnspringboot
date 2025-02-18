@@ -1,4 +1,4 @@
-package com.learn.example.studentprofile;
+package com.learn.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
