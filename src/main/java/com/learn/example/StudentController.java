@@ -12,37 +12,23 @@ public class StudentController {
 
 
     private final StudentRepository repository;
+    private final StudentMapper studentMapper;
 
-    public StudentController(StudentRepository repository) {
+
+    public StudentController(StudentRepository repository, StudentMapper studentMapper) {
         this.repository = repository;
+        this.studentMapper = studentMapper;
     }
 
     @PostMapping("/students")
     public StudentResponseDto post(
             @RequestBody StudentDto dto
     ){
-        var student = toStudent(dto);
+        var student = studentMapper.toStudent(dto);
        var savedStudent =  repository.save(student);
-       return  toStudentResponseDto(savedStudent);
+       return  studentMapper.toStudentResponseDto(savedStudent);
     }
-    private Student toStudent(StudentDto dto){
 
-        var student = new Student();
-        student.setFirstname(dto.firstname());
-        student.setLastname(dto.lastname());
-        student.setEmail(dto.email());
-        var school = new School();
-        school.setId(dto.schoolId());
-
-        student.setSchool(school);
-        return student;
-    }
-    private StudentResponseDto toStudentResponseDto(Student student){
-        return  new StudentResponseDto(student.getFirstname(),
-                student.getLastname(),
-                student.getEmail());
-
-    }
 
     @GetMapping("/students-all")
     public List<Student> findAllStudent(){
