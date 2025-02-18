@@ -1,7 +1,8 @@
-package com.learn.example;
+package com.learn.example.school;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.learn.example.student.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

@@ -1,7 +1,6 @@
-package com.learn.example;
+package com.learn.example.school;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ public class SchoolService {
         this.schoolMapper = schoolMapper;
     }
 
-    public  SchoolDto create(SchoolDto dto){
+    public SchoolDto create(SchoolDto dto){
         var school = schoolMapper.toSchool(dto);
         schoolRepository.save(school);
         return dto;

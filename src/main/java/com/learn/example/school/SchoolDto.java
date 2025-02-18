@@ -1,4 +1,4 @@
-package com.learn.example;
+package com.learn.example.school;
 
 
 public record SchoolDto(

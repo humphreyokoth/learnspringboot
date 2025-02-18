@@ -1,8 +1,6 @@
-package com.learn.example;
+package com.learn.example.school;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface SchoolRepository  extends JpaRepository<School,Integer> {
 

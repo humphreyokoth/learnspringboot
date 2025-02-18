@@ -1,6 +1,7 @@
-package com.learn.example;
+package com.learn.example.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.learn.example.school.School;
 import jakarta.persistence.*;
 
 @Entity
@@ -28,7 +29,7 @@ public class Student {
             name="school_id"
     )
     @JsonBackReference
-    private  School school;
+    private School school;
 
     public Student() {
     }

@@ -1,6 +1,4 @@
-package com.learn.example;
-
-import jakarta.persistence.Column;
+package com.learn.example.student;
 
 public record StudentDto(
         String firstname,

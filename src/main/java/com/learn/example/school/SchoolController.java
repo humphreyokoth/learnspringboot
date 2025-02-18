@@ -1,4 +1,4 @@
-package com.learn.example;
+package com.learn.example.school;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class SchoolController {
@@ -23,7 +22,7 @@ public class SchoolController {
 
 
     @PostMapping("/schools")
-    public  SchoolDto create(
+    public SchoolDto create(
             @RequestBody SchoolDto dto
     ){
       return  schoolService.create(dto);
