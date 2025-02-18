@@ -11,42 +11,38 @@ public class StudentController {
 
 
 
-    private final StudentRepository repository;
-    private final StudentMapper studentMapper;
+    private final StudentService studentService;
 
-
-    public StudentController(StudentRepository repository, StudentMapper studentMapper) {
-        this.repository = repository;
-        this.studentMapper = studentMapper;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
+
     @PostMapping("/students")
-    public StudentResponseDto post(
+    public StudentResponseDto saveStudent(
             @RequestBody StudentDto dto
     ){
-        var student = studentMapper.toStudent(dto);
-       var savedStudent =  repository.save(student);
-       return  studentMapper.toStudentResponseDto(savedStudent);
+          return  this.studentService.saveStudent(dto);
     }
 
 
     @GetMapping("/students-all")
     public List<Student> findAllStudent(){
-        return  repository.findAll();
+        return  this.studentService.findAllStudent();
     }
 
     @GetMapping("/students/{student-id}")
     public Student findStudentById(
             @PathVariable("student-id") Integer id
     ){
-        return  repository.findById(id).orElse(null);
+        return  this.studentService.findStudentById(id);
     }
 
     @GetMapping("/students/search/{student-name}")
     public List<Student> findStudentsByName(
             @PathVariable("student-name") String name
     ){
-        return  repository.findAllByFirstnameContaining(name);
+        return  this.studentService.findStudentsByName(name);
     }
 
     @DeleteMapping("/students/{student-id}")
@@ -56,7 +52,7 @@ public class StudentController {
 
     )
     {
-        repository.deleteById(id);
+          this.studentService.delete(id);
 
     }
 
