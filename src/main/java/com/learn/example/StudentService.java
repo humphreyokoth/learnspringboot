@@ -32,22 +32,15 @@ public class StudentService {
         return  repository.findAll();
     }
     
-    public Student findStudentById(
-            @PathVariable("student-id") Integer id  
-    ){
+    public Student findStudentById(Integer id){
         return  repository.findById(id).orElse(null);
     }
 
-    public List<Student> findStudentsByName(
-            @PathVariable("student-name") String name
-    ){
+    public List<Student> findStudentsByName(String name){
         return  repository.findAllByFirstnameContaining(name);
     }
 
-    public  void delete(
-            @PathVariable("student-id") Integer id
-
-    )
+    public  void delete(Integer id)
     {
         repository.deleteById(id);
 
