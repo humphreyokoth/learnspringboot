@@ -8,8 +8,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class StudentServiceTest {
 
@@ -27,7 +30,7 @@ class StudentServiceTest {
     }
 
     @Test
-    public void should_succesfully_save_a_student(){
+    public void should_successfully_save_a_student(){
 
         StudentDto dto = new StudentDto(
                 "john",
@@ -67,6 +70,35 @@ class StudentServiceTest {
         assertEquals(dto.firstname(),responseDto.firstname());
         assertEquals(dto.lastname(),responseDto.lastname());
         assertEquals(dto.email(),responseDto.email());
+
+        verify(studentMapper,times(1)).toStudent(dto);
+        verify(repository,times(1)).save(student);
+        verify(studentMapper,times(1)).toStudentResponseDto(savedStudent);
+
+    }
+
+    @Test
+    public void should_return_all_students(){
+        List<Student> students = new ArrayList<>();
+        students.add(new Student(
+                "john",
+                "doe",
+                "humpasp@gmail.com",
+                20
+        ));
+
+        when(repository.findAll()).thenReturn(students);
+        when(studentMapper.toStudentResponseDto(any(Student.class)))
+                .thenReturn(new StudentResponseDto(
+                        "john",
+                        "doe",
+                        "humpasp@gmail.com"
+                ));
+
+
+        List<StudentResponseDto> responseDtos = studentService.findAllStudent();
+
+        assertEquals(students.size(),responseDtos.size());
 
     }
 
